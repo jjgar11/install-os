@@ -38,7 +38,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 apt_pref='apt' && apt_upgr='upgrade'
 sed -i 's/plugins=(git)/plugins=(git z zsh-syntax-highlighting python debian)/' ~/.zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k/powerlevel10k"/'
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k/powerlevel10k"/' ~/.zshrc
 cp ~/.install/files/p10k.zsh ~/.p10k.zsh
 
 chsh -s $(which zsh)
