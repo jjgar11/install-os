@@ -31,7 +31,6 @@ cp ~/.install/files/ssh-config ~/.ssh/config
 # Change shell from bash to zsh with oh-my-zsh
 sudo apt install -y zsh
 yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s $(which zsh)
 
 mv ~/.zshrc ~/.zshrc-orig
 (cat .install/files/zsh_start; cat ~/.zshrc-orig) >  ~/.zshrc
@@ -42,7 +41,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k/powerlevel10k"/'
 cp ~/.install/files/p10k.zsh ~/.p10k.zsh
 
-source ~/.zshrc
+chsh -s $(which zsh)
 
 # Change login manager to lightdm
 sudo apt install lightdm && sudo dpkg-reconfigure -f noninteractive lightdm
