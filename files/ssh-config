@@ -1,0 +1,41 @@
+## SPINNCLOUD
+# GitLab
+Host gitlab-spc
+    HostName gitlab.com
+    IdentityFile ~/.ssh/id_rsa_repos_spc
+    User @juan.garl
+   
+# Remote machines
+Host Workstation
+    HostName 141.30.147.25
+    Port 5555
+    IdentityFile ~/.ssh/id_rsa_vpn_spc
+    User jleon
+    ForwardX11 yes
+   
+# Remote machines
+Host Demolaptop
+    HostName 141.30.147.25
+    Port 5556
+    IdentityFile ~/.ssh/id_rsa_vpn_spc
+    User jleon
+    ForwardX11 yes
+
+
+## PERSONAL
+# GitLab
+Host gitlab-personal
+   HostName gitlab.com
+   IdentityFile ~/.ssh/id_rsa_repos_personal
+   
+# Github
+Host github-personal
+   HostName github.com
+   IdentityFile ~/.ssh/id_rsa_repos_personal
+   User jjgar11
+   
+# Raspberry Pi
+Host raspberrypi
+   HostName 192.168.x.xxx
+   IdentityFile ~/.ssh/id_rsa_devices
+   User pi

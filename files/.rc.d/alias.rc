@@ -1,0 +1,16 @@
+# alias.rc
+
+
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias battery-status='upower -i /org/freedesktop/UPower/devices/battery_BAT1'
+# alias full-upgrade='sudo apt update && sudo apt -y upgrade'
+# alias full-update='sudo apt update && sudo apt upgrade -y'
+alias pingtest="ping -O 8.8.8.8 | gawk '{print ( \$5\" \"\$7) }'"
+# alias restart-plasmashell='kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell; exit'
+alias please='sudo'
+# alias emacs='emacs -nw'
+alias connect_sc='ssh -X jleon@141.30.147.25 -p5555'
+alias link-ssh-port='ssh -L 8888:localhost:8888 -N -f -p 5555 -o ControlPath=~/.ssh/control:%h:%p:%r -q jleon@141.30.147.25'
