@@ -2,14 +2,14 @@
 # GitLab
 Host gitlab-spc
     HostName gitlab.com
-    IdentityFile ~/.ssh/id_rsa_repos_spc
+    IdentityFile ~/.ssh/id_rsa_spc_repos
     User @juan.garl
    
 # Remote machines
 Host Workstation
     HostName 141.30.147.25
     Port 5555
-    IdentityFile ~/.ssh/id_rsa_vpn_spc
+    IdentityFile ~/.ssh/id_rsa_spc_vpn
     User jleon
     ForwardX11 yes
    
@@ -17,7 +17,7 @@ Host Workstation
 Host Demolaptop
     HostName 141.30.147.25
     Port 5556
-    IdentityFile ~/.ssh/id_rsa_vpn_spc
+    IdentityFile ~/.ssh/id_rsa_spc_vpn
     User jleon
     ForwardX11 yes
 
@@ -26,12 +26,12 @@ Host Demolaptop
 # GitLab
 Host gitlab-personal
    HostName gitlab.com
-   IdentityFile ~/.ssh/id_rsa_repos_personal
+   IdentityFile ~/.ssh/id_rsa_personal_repos
    
 # Github
 Host github-personal
    HostName github.com
-   IdentityFile ~/.ssh/id_rsa_repos_personal
+   IdentityFile ~/.ssh/id_rsa_personal_repos
    User jjgar11
    
 # Raspberry Pi
