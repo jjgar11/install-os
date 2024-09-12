@@ -33,7 +33,7 @@ sudo apt install -y zsh
 echo 'Y' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 mv ~/.zshrc ~/.zshrc-orig
-cp -r ~/.install/.rc.d/ ~/.rc.d/
+cp -r ~/.install/files/.rc.d/ ~/.rc.d/
 (cat .install/files/zsh_start; cat ~/.zshrc-orig) >  ~/.zshrc
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 apt_pref='apt' && apt_upgr='upgrade'
@@ -44,6 +44,4 @@ sed -i 's|ZSH_THEME="robbyrussell"|ZSH_THEME="powerlevel10k/powerlevel10k"|' ~/.
 chsh -s $(which zsh)
 
 # Change login manager to lightdm
-sudo apt install lightdm && sudo dpkg-reconfigure -f noninteractive lightdm
-
-shutdown -r now
+sudo apt install -y lightdm && sudo dpkg-reconfigure -f noninteractive lightdm
