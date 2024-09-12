@@ -1,0 +1,10 @@
+# init.rc
+
+# Ejecutar todos los archivos en ~/.rc.d/
+for rc in ~/.rc.d/*; do
+    if [ -f "$rc" ] && [ "$(basename "$rc")" != "init.rc" ]; then
+        source "$rc"
+    fi
+done
+
+pfetch
