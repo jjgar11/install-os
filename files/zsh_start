@@ -1,0 +1,4 @@
+# User specific definitions
+if [ -f ~/.rc.d/init.rc ]; then
+    source ~/.rc.d/init.rc
+fi
