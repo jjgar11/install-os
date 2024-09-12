@@ -17,7 +17,7 @@ sudo install /tmp/pfetch-master/pfetch-master/pfetch /usr/local/bin/
 rm -rf /tmp/master.zip /tmp/pfetch-master
 
 
-mkdir -p ~/.config/nvim && cp ~/.install/files/.vimrc ~/.config/nvim/init.nvim
+mkdir -p ~/.config/nvim && cp ~/.install/files/vimrc ~/.config/nvim/init.nvim
 
 # Configure ssh keys for different purposes
 keys=("devices" "personal_repos" "spc_repos" "spc_vpn")
@@ -30,15 +30,15 @@ cp ~/.install/files/ssh-config ~/.ssh/config
 
 # Change shell from bash to zsh with oh-my-zsh
 sudo apt install -y zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s $(which zsh)
 
 mv ~/.zshrc ~/.zshrc-orig
-(echo "# User specific definitions\nif [ -f ~/.rc.d/init.rc ]; then\n    source ~/.rc.d/init.rc\nfi\n\n"; cat ~/.zshrc-orig) >  ~/.zshrc
+(cat .install/files/zsh_start; cat ~/.zshrc-orig) >  ~/.zshrc
 apt_pref='apt' && apt_upgr='upgrade'
 sed -i 's/plugins=(git)/plugins=(git z zsh-syntax-highlighting python debian)/' ~/.zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-cp ~/.install/files/.p10k.zsh ~/
+cp ~/.install/files/p10k.zsh ~/.p10k.zsh
 
 source ~/.zshrc
 
