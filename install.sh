@@ -37,7 +37,7 @@ cp -r ~/.install/files/.rc.d/ ~/.rc.d/
 (cat .install/files/zsh_start; cat ~/.zshrc-orig) >  ~/.zshrc
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 apt_pref='apt' && apt_upgr='upgrade'
-sed -i 's/plugins=(git)/plugins=(git z zsh-syntax-highlighting python debian)/' ~/.zshrc
+sed -i 's/plugins=(git)/plugins=(git z zsh-syntax-highlighting python debian history)/' ~/.zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 sed -i 's|ZSH_THEME="robbyrussell"|ZSH_THEME="powerlevel10k/powerlevel10k"|' ~/.zshrc
 
