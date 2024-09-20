@@ -7,7 +7,14 @@ sudo apt update && sudo apt full-upgrade -y
 sudo apt install -y build-essential \
     nano bat gedit curl git wget gpg net-tools unzip \
     neofetch \
-    python3 python3-venv
+    python3 \
+    make libssl-dev zlib1g-dev \
+    nlibbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev \
+    nlibncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl
+
+# Install pyenv and virtualenvwrapper
+curl https://pyenv.run | bash
+git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
 
 # Link batcat to bat
 mkdir -p ~/.local/bin && ln -s /usr/bin/batcat ~/.local/bin/bat
