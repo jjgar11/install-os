@@ -32,7 +32,7 @@ chmod +x ./nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 ln -s /usr/local/bin/nvim ~/.local/bin/vim
 # Configure neovim
-mkdir -p ~/.config/nvim && cp ~/.install/files/vimrc ~/.config/nvim/init.nvim
+mkdir -p ~/.config/nvim && cp ~/.install/files/init.vim ~/.config/nvim/init.nvim
 
 # Configure ssh keys for different purposes
 keys=("devices" "personal_repos" "spc_repos" "spc_vpn")
