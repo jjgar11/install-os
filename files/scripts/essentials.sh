@@ -6,7 +6,7 @@ sudo apt update && sudo apt full-upgrade -y
 # Install essential packages
 sudo apt install -y \
     build-essential \
-    nano bat gedit curl git wget gpg net-tools unzip \
+    nano gedit curl git wget gpg net-tools unzip \
     neofetch \
     python3 \
     make libssl-dev zlib1g-dev \
