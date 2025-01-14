@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Link batcat to bat
-mkdir -p ~/.local/bin && ln -s /usr/bin/batcat /usr/bin/bat
+mkdir -p ~/.local/bin && sudo ln -s /usr/bin/batcat /usr/bin/bat
 
 # Install pfetch
 wget -q https://github.com/dylanaraps/pfetch/archive/master.zip -O /tmp/master.zip
