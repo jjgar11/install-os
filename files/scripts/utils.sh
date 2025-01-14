@@ -16,4 +16,4 @@ chmod +x ./nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 ln -s /usr/local/bin/nvim ~/.local/bin/vim
 # Configure neovim
-mkdir -p ~/.config/nvim && cp ~/.install/files/init.vim ~/.config/nvim/init.nvim
+mkdir -p ~/.config/nvim && cp ~/install-os/files/init.vim ~/.config/nvim/init.nvim
