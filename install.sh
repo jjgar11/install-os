@@ -1,7 +1,9 @@
 #!/bin/bash
 
+chmod +x ~/.install/files/scripts/*.sh
+
 source ~/.install/files/scripts/essentials.sh
-sudo source ~/.install/files/scripts/sudoers.sh
+sudo ~/.install/files/scripts/sudoers.sh
 source ~/.install/files/scripts/utils.sh
 source ~/.install/files/scripts/pyenv.sh
 source ~/.install/files/scripts/ssh.sh

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the name of the user executing the script
-USER=$(whoami)
+USER=${SUDO_USER:-$(whoami)}
 
 # Validate that the script is being run as root
 if [ "$EUID" -ne 0 ]; then
