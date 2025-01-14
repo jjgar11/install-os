@@ -11,4 +11,3 @@ eval "$(pyenv virtualenv-init -)"
 
 # Install pyenv-virtualenvwrapper
 git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
-pyenv virtualenvwrapper
