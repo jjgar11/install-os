@@ -31,12 +31,25 @@ echo "Copying custom Zsh configurations..."
 RC_D_SOURCE="$HOME/install-os/files/.rc.d"
 RC_D_TARGET="$HOME/.rc.d"
 if [[ -d "$RC_D_SOURCE" ]]; then
-    cp -r "$RC_D_SOURCE" "$RC_D_TARGET"
+    # Copy files while overwriting and setting permissions
+    cp -rT "$RC_D_SOURCE" "$RC_D_TARGET"
+
+    # Set the copied files to read-only (only the user can edit custom configurations)
+    find "$RC_D_TARGET" -type f -exec chmod 444 {} \;
+
+    # Create a separate file for user customizations that will not be overwritten
+    # USER_CONFIG_FILE="$RC_D_TARGET/user_customizations.conf"
+    # if [ ! -f "$USER_CONFIG_FILE" ]; then
+    #     touch "$USER_CONFIG_FILE"
+    #     chmod 644 "$USER_CONFIG_FILE"  # Allow the user to edit it
+    #     echo "# Place your custom configurations in this file." > "$USER_CONFIG_FILE"
+    # fi
 else
     echo "Error: Source directory $RC_D_SOURCE does not exist."
     exit 1
 fi
 
+# Ensure zsh_start file exists before trying to copy
 ZSH_START_FILE="$HOME/install-os/files/zsh_start"
 if [[ -f "$ZSH_START_FILE" ]]; then
     cat "$ZSH_START_FILE" "$ZSHRC_ORIG" > "$HOME/.zshrc"
