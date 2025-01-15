@@ -19,7 +19,7 @@ echo "System updated successfully."
 echo "Installing essential packages..."
 # Install essential packages
 sudo apt install -y \
-  build-essential nano gedit curl git wget gpg net-tools unzip neofetch python3
+  build-essential nano gedit curl git wget gpg net-tools unzip neofetch python3 gnupg2
 echo "Basic essential packages installed."
 
 echo "Installing development libraries..."

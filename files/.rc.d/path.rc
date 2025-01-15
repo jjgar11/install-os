@@ -16,6 +16,7 @@ if [ -d "/sbin" ] ; then
 fi
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+sed -i 's/typeset -g POWERLEVELSK INSTANT_PROMPT=(.*)/typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose/' "$HOME/.p10k.zsh"
 
 
 # export pyenv PATH
