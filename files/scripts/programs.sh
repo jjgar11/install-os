@@ -56,4 +56,10 @@ scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee /usr/local/share
 # Zsh shell completion
 mkdir -p ${ZDOTDIR:-~}/.zsh_functions
 echo 'fpath+=${ZDOTDIR:-~}/.zsh_functions' >> ${ZDOTDIR:-~}/.zshrc
-cp "$ALACRITTY_TEMP_DIRextra/completions/_alacritty" ${ZDOTDIR:-~}/.zsh_functions/_alacritty
+cp "$ALACRITTY_TEMP_DIR/extra/completions/_alacritty" ${ZDOTDIR:-~}/.zsh_functions/_alacritty
+rm -rf "$ALACRITTY_TEMP_DIR"
+# Configuration file and themes
+ALACRITTY_CONFIG_DIR="$HOME/.config/alacritty"
+mkdir -p "$ALACRITTY_CONFIG_DIR/themes"
+git clone https://github.com/alacritty/alacritty-theme "$ALACRITTY_CONFIG_DIR/themes"
+cp "$HOME/install-os/files/config/alacritty.toml" "$ALACRITTY_CONFIG_DIR/alacritty.toml"
