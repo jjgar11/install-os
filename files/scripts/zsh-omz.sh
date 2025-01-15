@@ -3,6 +3,30 @@
 # Exit on any error or unset variable, and treat errors in pipelines properly
 set -euo pipefail
 
+# Copy custom configurations
+echo "Copying custom Zsh configurations..."
+RC_D_SOURCE="$HOME/install-os/files/.rc.d"
+RC_D_TARGET="$HOME/.rc.d"
+if [[ -d "$RC_D_SOURCE" ]]; then
+    find "$RC_D_TARGET" -type f -exec chmod 777 {} \;
+    # Copy files while overwriting and setting permissions
+    cp -rT "$RC_D_SOURCE" "$RC_D_TARGET"
+
+    # Set the copied files to read-only (only the user can edit custom configurations)
+    find "$RC_D_TARGET" -type f -exec chmod 444 {} \;
+
+    # Create a separate file for user customizations that will not be overwritten
+    # USER_CONFIG_FILE="$RC_D_TARGET/user_customizations.conf"
+    # if [ ! -f "$USER_CONFIG_FILE" ]; then
+    #     touch "$USER_CONFIG_FILE"
+    #     chmod 644 "$USER_CONFIG_FILE"  # Allow the user to edit it
+    #     echo "# Place your custom configurations in this file." > "$USER_CONFIG_FILE"
+    # fi
+else
+    echo "Error: Source directory $RC_D_SOURCE does not exist."
+    exit 1
+fi
+
 # Install zsh if not already installed
 echo "Installing zsh..."
 if ! command -v zsh &> /dev/null; then
@@ -24,29 +48,6 @@ ZSHRC_ORIG="$HOME/.zshrc-orig"
 if [[ -f "$HOME/.zshrc" && ! -f "$ZSHRC_ORIG" ]]; then
     echo "Backing up existing .zshrc to $ZSHRC_ORIG..."
     mv "$HOME/.zshrc" "$ZSHRC_ORIG"
-fi
-
-# Copy custom configurations
-echo "Copying custom Zsh configurations..."
-RC_D_SOURCE="$HOME/install-os/files/.rc.d"
-RC_D_TARGET="$HOME/.rc.d"
-if [[ -d "$RC_D_SOURCE" ]]; then
-    # Copy files while overwriting and setting permissions
-    cp -rT "$RC_D_SOURCE" "$RC_D_TARGET"
-
-    # Set the copied files to read-only (only the user can edit custom configurations)
-    find "$RC_D_TARGET" -type f -exec chmod 444 {} \;
-
-    # Create a separate file for user customizations that will not be overwritten
-    # USER_CONFIG_FILE="$RC_D_TARGET/user_customizations.conf"
-    # if [ ! -f "$USER_CONFIG_FILE" ]; then
-    #     touch "$USER_CONFIG_FILE"
-    #     chmod 644 "$USER_CONFIG_FILE"  # Allow the user to edit it
-    #     echo "# Place your custom configurations in this file." > "$USER_CONFIG_FILE"
-    # fi
-else
-    echo "Error: Source directory $RC_D_SOURCE does not exist."
-    exit 1
 fi
 
 # Ensure zsh_start file exists before trying to copy
