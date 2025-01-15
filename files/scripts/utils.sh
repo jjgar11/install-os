@@ -51,7 +51,7 @@ fi
 echo "Configuring neovim..."
 mkdir -p ~/.config/nvim
 if [[ ! -f ~/.config/nvim/init.vim ]]; then
-  cp ~/install-os/files/init.vim ~/.config/nvim/init.nvim
+  cp ~/install-os/files/config/init.vim ~/.config/nvim/init.nvim
   echo "neovim configuration copied."
 else
   echo "neovim configuration already exists."
