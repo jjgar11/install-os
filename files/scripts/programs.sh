@@ -22,7 +22,6 @@ install_repo \
   "/etc/apt/keyrings/packages.microsoft.gpg" \
   "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" \
   "/etc/apt/sources.list.d/vscode.list"
-sudo apt-get update && sudo apt-get install -y code
 
 
 # Add Vivaldi repository and install
@@ -32,7 +31,6 @@ install_repo \
   "/etc/apt/keyrings/vivaldi-browser.gpg" \
   "deb [signed-by=/etc/apt/keyrings/vivaldi-browser.gpg arch=$(dpkg --print-architecture)] https://repo.vivaldi.com/archive/deb/ stable main" \
   "/etc/apt/sources.list.d/vivaldi-archive.list"
-sudo apt-get update && sudo apt-get install -y vivaldi-stable
 
 
 # Add Spotify repository and install
@@ -42,17 +40,19 @@ install_repo \
   "/etc/apt/keyrings/spotify.gpg" \
   "deb [signed-by=/etc/apt/keyrings/spotify.gpg] http://repository.spotify.com stable non-free" \
   "/etc/apt/sources.list.d/spotify.list"
-sudo apt-get update && sudo apt-get install -y spotify-client
+sudo apt-get update
+sudo apt-get install -y code vivaldi-stable spotify-client
 
 # Install Alacritty terminal emulator
 echo "Installing Alacritty..."
 
 # Install Rust and other dependencies
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source "$HOME/.cargo/env"
 rustup override set stable
 rustup update stable
 sudo apt-get install -y cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev \
-  libxcb-xfixes0-dev libxkbcommon-dev python3 sdoc gzip
+  libxcb-xfixes0-dev libxkbcommon-dev python3 scdoc gzip
 
 # Clone Alacritty and build
 ALACRITTY_TEMP_DIR=$(mktemp -d)
