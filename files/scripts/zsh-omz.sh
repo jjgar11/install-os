@@ -5,7 +5,7 @@ set -euo pipefail
 
 # Copy custom configurations
 echo "Copying custom Zsh configurations..."
-RC_D_SOURCE="$HOME/install-os/files/.rc.d"
+RC_D_SOURCE="$HOME/install-os/files/rc.d"
 RC_D_TARGET="$HOME/.rc.d"
 if [[ -d "$RC_D_SOURCE" ]]; then
     find "$RC_D_TARGET" -type f -exec chmod 777 {} \;
