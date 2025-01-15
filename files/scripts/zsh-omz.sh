@@ -68,11 +68,12 @@ else
     echo "zsh-syntax-highlighting plugin is already installed."
 fi
 
-echo "Installing Powerlevel10k theme..."
+echo "Checking if Powerlevel10k is installed..."
 if [[ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]]; then
+    echo "Powerlevel10k theme is not installed. Installing..."
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k"
 else
-    echo "Powerlevel10k theme is already installed."
+    echo "Powerlevel10k theme is already installed. Skipping installation."
 fi
 
 # Update .zshrc with custom plugins and theme
