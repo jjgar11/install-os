@@ -1,40 +1,36 @@
 #!/bin/bash
 
+# Exit immediately if a command exits with a non-zero status
 set -euo pipefail
 
-LOG_FILE=~/install-os/install.log
-mkdir -p "$(dirname "$LOG_FILE")"
-exec > >(tee -a "$LOG_FILE") 2>&1
-
-echo "Starting installation process at $(date)..."
-
-# Function to run each script and handle errors
-run_script() {
-    local script=$1
-    echo "Running $script..."
-    if bash "$script"; then
-        echo "✅ Successfully ran $script."
-    else
-        echo "❌ Error occurred while running $script. Continuing with the next step..."
-    fi
+# Ensure all scripts in the specified directory have execution permissions
+chmod +x ~/install-os/files/scripts/*.sh || {
+  echo "Failed to make scripts executable. Please check the path or permissions."
+  exit 1
 }
 
-# Make all scripts executable
-chmod +x ~/install-os/files/scripts/*.sh
+# Function to safely source a script with error checking
+source_script() {
+  local script_path="$1"
+  if [[ -f "$script_path" ]]; then
+    echo "Sourcing $script_path..."
+    source "$script_path"
+  else
+    echo "Error: Script $script_path not found!" >&2
+    exit 1
+  fi
+}
 
-# Run scripts in order
-scripts=(
-    "~/install-os/files/scripts/essentials.sh"
-    "~/install-os/files/scripts/sudoers.sh"
-    "~/install-os/files/scripts/utils.sh"
-    "~/install-os/files/scripts/pyenv.sh"
-    "~/install-os/files/scripts/ssh-config.sh"
-    "~/install-os/files/scripts/zsh-omz.sh"
-    "~/install-os/files/scripts/lightdm.sh"
-)
+# Source each required script
+source_script ~/install-os/files/scripts/essentials.sh
+sudo ~/install-os/files/scripts/sudoers.sh || {
+  echo "Failed to execute sudoers.sh. Please check permissions."
+  exit 1
+}
+source_script ~/install-os/files/scripts/utils.sh
+source_script ~/install-os/files/scripts/pyenv.sh
+source_script ~/install-os/files/scripts/ssh-config.sh
+source_script ~/install-os/files/scripts/zsh-omz.sh
+source_script ~/install-os/files/scripts/lightdm.sh
 
-for script in "${scripts[@]}"; do
-    run_script "$script"
-done
-
-echo "Installation process completed at $(date). Check the log at $LOG_FILE for details."
+echo "All scripts executed successfully."
